@@ -4,8 +4,6 @@
 
 package com.mycompany.login;
 
-import java.util.Scanner;
-
 /**
  *
  * @author miyel
@@ -17,6 +15,8 @@ public class Login {
         private String registeredUsername;
         private String registeredPassword;
         private String registeredCellNumber;
+        private String FirstName;
+        private String LastName;
         
         //check if the user name iS NOT an "" ,that it contains Letters a number and special characters
         public boolean checkUserName(String userName){
@@ -82,16 +82,37 @@ public class Login {
                    
         }
         
-        /***  using the 'this' keyword learn't that it  prevent variable shadowing and .
-    * @see <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html">Oracle Java Docs - Using the this Keyword</a>
-    * 
-    */
         this.registeredUsername = username;
         this.registeredPassword = password;
         this.registeredCellNumber = cellNumber;
+        this.FirstName =firstName;
+        this.LastName = lastName;
         
-         return "You have been successfully registered";
+        return "You have been successfully registered";
+        /***  using the 'this' keyword prevent variable shadowing  .
+    * @see <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html">Oracle Java Docs - Using the this Keyword</a>
+    * 
+    */
+        
         }
+        //This method verifies that the login details entered match the login details stored when the user registers.
+        public boolean loginUser(String userName, String password){
+            return userName.equals(this.registeredUsername) && password.equals(this.registeredPassword);
+        }
+        
+        //This method returns the necessary messaging for:A successful login and A failed login
+
+        public  String returnLoginStatus(boolean loggedin){
+        if (loggedin){
+            return "Welcome " +this.FirstName+"," + this.LastName+ "it is great to see you ";
+        } else {
+            return "User name or password incorrect, pleas try again";
+        }  
+        }
+            
+                
+             
+
         
         
         
