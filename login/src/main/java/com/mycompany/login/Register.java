@@ -37,7 +37,7 @@ public class Register {
     //check if username meets requirements
             while (!myLogin.checkUserName(UserName)) {  
                 System.out.println(" Username is not correctly formitted please ensure that your"
-                        + "user name contains an underscore and is no more than five characters in Lenght");
+                        + " username contains an underscore and is no more than five characters in Lengh");
                 System.out.println("Please enter name again: ");
                 UserName = myscanner.nextLine();
            

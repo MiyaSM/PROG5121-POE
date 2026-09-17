@@ -71,14 +71,14 @@ public class Login {
         
         if (!checkUserName(username)){
             
-            return "User name is not correctly formitted; please ensure that your username contains"
-                    + "an underscore and is no more than five characters in leghth.";
+            return "Username is not correctly formatted; please ensure that your username contains " 
+                    + "an underscore and is no more than five characters in length.";
         }
         
         if (!checkPasswordComplexity(password)){
-           return "Password is not correctly formated; please ensure that the password"
-                   + "contains at least eight characters, a capital letter, a number"
-                   + "and a special character";
+           return "Password is not correctly formatted; please ensure that the password "
+                   + "contains at least eight characters, a capital letter, a number, "
+                   + "and a special character.";
                    
         }
         
@@ -88,7 +88,7 @@ public class Login {
         firstName =fName;
         lastName = lName;
         
-        return "Password  successfully captured.";
+        return "Password successfully captured.";
       
         }
         //This method verifies that the login details entered match the login details stored when the user registers.
@@ -102,7 +102,7 @@ public class Login {
         if (loggedIn){
             return "Welcome " +firstName+" " + lastName+ ", it is great to see you.";
         } else {
-            return "User name or password incorrect, please try again";
+            return "Username or password incorrect, please try again.";
         }  
         }
             
