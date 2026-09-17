@@ -15,8 +15,8 @@ public class Login {
         private String registeredUsername;
         private String registeredPassword;
         private String registeredCellNumber;
-        private String FirstName;
-        private String LastName;
+        private String firstName;
+        private String lastName;
         
         //check if the user name iS NOT an "" ,that it contains Letters a number and special characters
         public boolean checkUserName(String userName){
@@ -30,7 +30,7 @@ public class Login {
             }
            
             boolean capitalChar = false;
-            boolean Number = false;
+            boolean number = false;
             boolean specialChar = false;
             
             //used a for loop to check each character in the password
@@ -47,10 +47,10 @@ public class Login {
             }
            //check if it has a number
             if(Character.isDigit(pass)){
-                Number = true;
+                number = true;
             }
            }
-            return capitalChar && Number && specialChar;
+            return capitalChar && number && specialChar;
               
         }
         //This method ensures that the cell phone is the correct length and contains the international country code.
@@ -66,47 +66,43 @@ public class Login {
         return cellPhoneNumber.matches(regex);
         }
         
-        public String registerUser(String username, String password, String cellNumber, String firstName, String lastName){
+        public String registerUser(String username, String password, String cellNumber, String fName, String lName){
         //validate userName
         
         if (!checkUserName(username)){
             
-            return "User name is not correctly formitted please ensure that your username contains"
-                    + "an underscore and is no more than five characters in leghth";
+            return "User name is not correctly formitted; please ensure that your username contains"
+                    + "an underscore and is no more than five characters in leghth.";
         }
         
         if (!checkPasswordComplexity(password)){
-           return "Password is not correctly formated please ensure that the password"
+           return "Password is not correctly formated; please ensure that the password"
                    + "contains at least eight characters, a capital letter, a number"
                    + "and a special character";
                    
         }
         
-        this.registeredUsername = username;
-        this.registeredPassword = password;
-        this.registeredCellNumber = cellNumber;
-        this.FirstName =firstName;
-        this.LastName = lastName;
+        registeredUsername = username;
+        registeredPassword = password;
+        registeredCellNumber = cellNumber;
+        firstName =fName;
+        lastName = lName;
         
-        return "You have been successfully registered";
-        /***  using the 'this' keyword prevent variable shadowing  .
-    * @see <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/thiskey.html">Oracle Java Docs - Using the this Keyword</a>
-    * 
-    */
-        
+        return "Password  successfully captured.";
+      
         }
         //This method verifies that the login details entered match the login details stored when the user registers.
         public boolean loginUser(String userName, String password){
-            return userName.equals(this.registeredUsername) && password.equals(this.registeredPassword);
+            return registeredUsername != null && registeredUsername.equals(userName)&& registeredPassword.equals(password);
         }
         
         //This method returns the necessary messaging for:A successful login and A failed login
 
-        public  String returnLoginStatus(boolean loggedin){
-        if (loggedin){
-            return "Welcome " +this.FirstName+"," + this.LastName+ "it is great to see you ";
+        public  String returnLoginStatus(boolean loggedIn){
+        if (loggedIn){
+            return "Welcome " +firstName+" " + lastName+ ", it is great to see you.";
         } else {
-            return "User name or password incorrect, pleas try again";
+            return "User name or password incorrect, please try again";
         }  
         }
             
