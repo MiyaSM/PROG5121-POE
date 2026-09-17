@@ -31,7 +31,7 @@ public class LoginTest {
     @Test
     public void testCheckPasswordComplexitySuccess() {
         Login login = new Login();
-        // Valid: Meets length, uppercase, number, and special character requirements
+        //  Meets length, uppercase, number, and special character requirements
         assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"), "Password meeting all complexity rules should return true.");
     }
 

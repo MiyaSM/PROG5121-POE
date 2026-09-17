@@ -9,7 +9,7 @@ package com.mycompany.login;
  * @author miyel
  */
 public class Login {
-
+    //login class contains methode codes 
    
         // Fields to store user information
         private String registeredUsername;

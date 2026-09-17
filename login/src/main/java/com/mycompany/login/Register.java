@@ -11,35 +11,36 @@ import java.util.Scanner;
  * @author miyel
  */
 public class Register {
+    
    public static void main(String [] args){ 
     Scanner myscanner = new Scanner(System.in);
     Login myLogin = new Login();
     
     //Declare my variable
-    String UserName;
-    String Password;
+    String userName;
+    String password;
     String cellnumber;
-    String FirstName;
-    String LastName;
+    String firstName;
+    String lastName;
     
     
     //ask and collect user inputs
     System.out.print("Enter FirstName: ");
-    FirstName = myscanner.nextLine();
+    firstName = myscanner.nextLine();
             
     System.out.print("Enter LastName: ");
-    LastName= myscanner.nextLine();
+    lastName= myscanner.nextLine();
     
     System.out.print("Enter username: ");
     System.out.println("It must contain an under score and is no more than 5 character long ");
-    UserName = myscanner.nextLine();
+    userName = myscanner.nextLine();
     
     //check if username meets requirements
-            while (!myLogin.checkUserName(UserName)) {  
+            while (!myLogin.checkUserName(userName)) {  
                 System.out.println(" Username is not correctly formitted please ensure that your"
                         + " username contains an underscore and is no more than five characters in Lengh");
                 System.out.println("Please enter name again: ");
-                UserName = myscanner.nextLine();
+                userName = myscanner.nextLine();
            
        }
             System.out.println("Username successfully captured.");     
@@ -48,14 +49,14 @@ public class Register {
     System.out.print("Password must be lat least 8 charactes long ");
     System.out.print("Password must contain a number ");
     System.out.print("Password must Hve a capital letter and special characters ");
-    Password = myscanner.nextLine();
+    password = myscanner.nextLine();
     
-        while (!myLogin.checkPasswordComplexity(Password)) { 
+        while (!myLogin.checkPasswordComplexity(password)) { 
             System.out.println("Password is not correctly formated please ensure that the password"
                    + "contains at least eight characters, a capital letter, a number"
                    + "and a special character");
             System.out.println("Please enter Password: ");
-            Password = myscanner.nextLine();
+            password = myscanner.nextLine();
            
        }
     
@@ -69,7 +70,7 @@ public class Register {
        System.out.println("Cell phone number successfully added.");
        
         // Register user and output result
-        String registered = myLogin.registerUser(UserName, Password, cellnumber, FirstName, LastName);
+        String registered = myLogin.registerUser(userName, password, cellnumber, firstName, lastName);
         System.out.println("\n" + registered);
         
         
