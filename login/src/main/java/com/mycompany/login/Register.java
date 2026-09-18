@@ -32,13 +32,13 @@ public class Register {
     lastName= myscanner.nextLine();
     
     System.out.print("Enter username: ");
-    System.out.println("It must contain an under score and is no more than 5 character long ");
+    System.out.println("It must contain an under score a number and is no more than 5 character long ");
     userName = myscanner.nextLine();
     
     //check if username meets requirements
             while (!myLogin.checkUserName(userName)) {  
                 System.out.println(" Username is not correctly formitted please ensure that your"
-                        + " username contains an underscore and is no more than five characters in Lengh");
+                        + " username contains a number an underscore and is no more than five characters in Lengh");
                 System.out.println("Please enter name again: ");
                 userName = myscanner.nextLine();
            
@@ -50,6 +50,7 @@ public class Register {
     System.out.print("Password must contain a number ");
     System.out.print("Password must Hve a capital letter and special characters ");
     password = myscanner.nextLine();
+    
     
         while (!myLogin.checkPasswordComplexity(password)) { 
             System.out.println("Password is not correctly formated please ensure that the password"

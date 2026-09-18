@@ -19,9 +19,12 @@ public class Login {
         private String lastName;
         
         //check if the user name iS NOT an "" ,that it contains Letters a number and special characters
-        public boolean checkUserName(String userName){
-            return !userName.equals("") && userName.contains("_") && userName.length() <= 5;
-        }
+        public boolean checkUserName(String userName) {
+            return !userName.isEmpty()
+                    && userName.contains("_")
+                    && userName.length() <= 5
+                    && userName.matches(".*\\d.*");
+}
         
         //Check if passord has 8 characters a capital letter ,special characters and a number
         public boolean checkPasswordComplexity(String password){
