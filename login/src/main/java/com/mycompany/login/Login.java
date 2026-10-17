@@ -22,8 +22,7 @@ public class Login {
         public boolean checkUserName(String userName) {
             return !userName.isEmpty()
                     && userName.contains("_")
-                    && userName.length() <= 5
-                    && userName.matches(".*\\d.*");
+                    && userName.length() <= 5;
 }
         
         //Check if passord has 8 characters a capital letter ,special characters and a number
@@ -84,6 +83,10 @@ public class Login {
                    + "and a special character.";
                    
         }
+       
+         if (!checkCellPhoneNumber(cellNumber)) {
+               return "Cell phone number incorrectly formatted or does not contain international code.";
+        }
         
         registeredUsername = username;
         registeredPassword = password;
@@ -103,7 +106,7 @@ public class Login {
 
         public  String returnLoginStatus(boolean loggedIn){
         if (loggedIn){
-            return "Welcome " +firstName+" " + lastName+ ", it is great to see you.";
+            return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
         }  
