@@ -21,8 +21,8 @@ import org.json.JSONObject;
 
 public class Messages {
     //stores message details
-    private String messageID;
-    private String recipient;
+    public String messageID;
+    public String recipient;
     private String message;
     private String messagehash;
     
@@ -83,7 +83,7 @@ public class Messages {
     } 
     
      //methode returns all messages sent
-        String printMessages(){
+        public String printMessages(){
             return "Message ID:" + messageID + "\nMessage Hash" + messagehash 
                     + "\nRecipient: " + recipient + "\nMessage: "+ message ;
                 

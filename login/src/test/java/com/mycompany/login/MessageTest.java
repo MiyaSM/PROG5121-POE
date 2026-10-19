@@ -53,13 +53,13 @@ public class MessageTest {
 
     // --- MESSAGE HASH TESTS ---
 
-    @Test
+   @Test
     public void testCreateMessageHash() {
-        Messages msg = new Messages();
-        String expectedHash = "ID:1:HELLOWORLD";
-        String actualHash = msg.createMessageHash("ID01", 1, "Hello world");
-        assertEquals(expectedHash, actualHash, "Message hash must match the required format (ID:number:FIRSTLAST).");
-    }
+    Messages msg = new Messages();
+    String expectedHash = "ID:1:HELLOWORLD";
+    String actualHash = msg.createMessageHash("ID01", 1, "Hello world");
+    assertEquals(expectedHash, actualHash);
+}
 
     // --- MENU / SENT MESSAGE OPTION TESTS ---
 
