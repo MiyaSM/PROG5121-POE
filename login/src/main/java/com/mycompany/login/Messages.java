@@ -1,6 +1,10 @@
 
 package com.mycompany.login;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.JSONObject;
+
 
 
 
@@ -16,12 +20,13 @@ package com.mycompany.login;
 
 
 public class Messages {
-    
+    //stores message details
     private String messageID;
     private String recipient;
     private String message;
     private String messagehash;
     
+    //will contain the total messages sent
     private static int totalMessages = 0;
     
     //check if user name is not more than 10 characters
@@ -41,7 +46,7 @@ public class Messages {
     }
     
     // Method to create a unique hash for the message
-    String createMessageHash(String MsgID, int messageNumber,String messages){
+    public String createMessageHash(String MsgID, int messageNumber,String messages){
         String[] messageword = messages.trim().split("\\s+");
         String Fistword = "";
         String Lastword = "";
@@ -67,6 +72,8 @@ public class Messages {
              return "Press 0 to delete the message";
              
          case 3 :
+             // Stores the message in a JSON file
+             storeMessage();
              return "Message successfully stored";
              
          default:
@@ -77,15 +84,31 @@ public class Messages {
     
      //methode returns all messages sent
         String printMessages(){
-            return "Message ID:" + messageID + "\nMessage Hash" + messagehash + "\nMessage: "
-                + message;
+            return "Message ID:" + messageID + "\nMessage Hash" + messagehash 
+                    + "\nRecipient: " + recipient + "\nMessage: "+ message ;
+                
     }
         
         public int returnTotalMessages(){
-            return totalMessages;
-            
+            return totalMessages;    
         
         }
+        public void storeMessage() {
+            JSONObject jsonMessage = new JSONObject();
+            jsonMessage.put("messageID", messageID);
+            jsonMessage.put("messageHash", messagehash);
+            jsonMessage.put("recipient", recipient);
+            jsonMessage.put("message", message);
+     
+    // 2. Write the JSON object to a file
+            try (FileWriter file = new FileWriter("messages.json", true)) {
+            file.write(jsonMessage.toString(4)); // toString(4) formats it nicely with indentation
+            file.write("\n");
+            System.out.println("Message successfully stored to JSON file.");
+          } catch (IOException e) {
+            System.out.println("Error writing to JSON file: " + e.getMessage());
+    }
+}
        
        
         

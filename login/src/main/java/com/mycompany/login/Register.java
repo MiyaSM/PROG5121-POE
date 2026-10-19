@@ -89,9 +89,102 @@ public class Register {
        
        System.out.println("\n" + Status);
 
-  
+        /////////////// PART 2 ///////////////////////////////////                              
+        //The user would only move to the second stage if they have successfuly loged in
+        if(isloggedIn){
+        System.out.println("Welcome to QuickChat.");
+        
+        
+       boolean Active = true;
+       Messages msgObject = new Messages();
+       // used a while loop it will display menue option until the user
+       // desides to quit
+       while (Active) {  
+            System.out.println("\n1) Send message");
+            System.out.println("2) Show recently sent messages coming soon");
+            System.out.println("3) Quit");
+            System.out.println("Choose an option 1 to 3");
+     
+            int number = myscanner.nextInt();
+            myscanner.nextLine(); // consume newline
+      
+        switch(number) {
+            case 1:
+                //ask user how many messages they want to send
+                System.out.print("How many messages would you like to enter? ");
+                int Messagecount = myscanner.nextInt();
+                myscanner.nextLine(); // consume newline
+                
+             // the loop will loop trough the amount of times the user want to 
+             //enter ther message
+            for(int i = 1; i <= Messagecount; i++){
+                System.out.println("Message " + i + " of " + Messagecount + " ---");
+                
+                 
+                System.out.print("Enter Message ID (max 10 characters): ");
+                String MessageID = myscanner.nextLine();
+                 
+                System.out.print("Enter Recipient Cell Number (format +27XXXXXXXXX): ");
+                String recipientCell = myscanner.nextLine();
+                System.out.println(msgObject.checkRecipientCell(recipientCell));
+                 
+                System.out.println("Enter Message (max 250 characters): ");
+                String Message = myscanner.nextLine();
+                 
+                if (Message.length() <= 250) {
+                    System.out.println("Message sent"); 
+                } else {
+                    System.out.println("Please enter a message of less than 250 characters.");
+                }
+                 
+                System.out.println("\nChoose action:");
+                System.out.println("1) Send Message");
+                System.out.println("2) Disregard Message");
+                System.out.println("3) Store Message to send later");
+                int Choice = myscanner.nextInt();
+                myscanner.nextLine(); // consume newline - crucial to prevent skipping!
+                 
+                System.out.println(msgObject.sentMessage(Choice));
+             
+                if (Choice == 1 || Choice == 3){
+                    System.out.println(msgObject.printMessages());
+                }
+            }
+             //display the toatal amount of messages sent
+                System.out.println("\nTotal messages processed: " + msgObject.returnTotalMessages());
+                 break;
+            
+            case 2:
+                System.out.println("Coming Soon.");
+                break;
 
-   }    
-       
+            case 3:
+                System.out.println("Exiting QuickChat. Goodbye!");
+                Active = false;
+                break;
+    
+            default:
+                System.out.println("Invalid option. Please choose 1, 2, or 3.");
+    }
 }
+        
+                     
+        }        
+            }
+                    
+                   }
+                      
+                 
+                       
+                   
+               
+           
+         
+         
+       
+ 
+ 
+      
+       
+
    
