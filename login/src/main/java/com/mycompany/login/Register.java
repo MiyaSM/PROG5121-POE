@@ -4,6 +4,7 @@
  */
 package com.mycompany.login;
 
+import java.util.Random;
 import java.util.Scanner;
 
 /** 
@@ -121,8 +122,15 @@ public class Register {
                 System.out.println("Message " + i + " of " + Messagecount + " ---");
                 
                  
-                System.out.print("Enter Message ID (max 10 characters): ");
-                String MessageID = myscanner.nextLine();
+                // Automatically generate a random 10-digit Message ID using a simple loop
+            Random rand = new Random();
+            String MessageID = "";
+                for (int j = 0; j < 10; j++) {
+                    MessageID += rand.nextInt(10);
+                }
+                System.out.println("Generated Message ID: " + MessageID);
+                msgObject.setMessageID(MessageID);
+                
                  
                 System.out.print("Enter Recipient Cell Number (format +27XXXXXXXXX): ");
                 String recipientCell = myscanner.nextLine();
