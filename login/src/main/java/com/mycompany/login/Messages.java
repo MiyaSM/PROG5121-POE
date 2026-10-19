@@ -112,6 +112,7 @@ public class Messages {
             return totalMessages;    
         
         }
+        //store the messages in a jason file
         public void storeMessage() {
             JSONObject jsonMessage = new JSONObject();
             jsonMessage.put("messageID", messageID);
@@ -126,7 +127,11 @@ public class Messages {
             System.out.println("Message successfully stored to JSON file.");
           } catch (IOException e) {
             System.out.println("Error writing to JSON file: " + e.getMessage());
-    }
+     //code geeks for geeks       
+    }//code from <a href ="https://www.geeksforgeeks.org/java/working-with-json-data-in-java/> jsaon file<a/>
+            
+     
+               
 }
        
        
