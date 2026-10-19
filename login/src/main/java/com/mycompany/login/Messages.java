@@ -102,7 +102,7 @@ public class Messages {
      
     // 2. Write the JSON object to a file
             try (FileWriter file = new FileWriter("messages.json", true)) {
-            file.write(jsonMessage.toString(4)); // toString(4) formats it nicely with indentation
+            file.write(jsonMessage.toString(4)); 
             file.write("\n");
             System.out.println("Message successfully stored to JSON file.");
           } catch (IOException e) {
