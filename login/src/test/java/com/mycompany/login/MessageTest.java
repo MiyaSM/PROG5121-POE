@@ -24,7 +24,7 @@ public class MessageTest {
 
     // QUESTION 8 TESTS: Testing Specific Rubric Test Data Cases
 
-    // Test 1: Rubric Test Data Case 1 (Valid phone number, text, hash, and sending action)
+    
     @Test
     public void TestDataCase1() {
         Messages msg = new Messages();
@@ -34,7 +34,6 @@ public class MessageTest {
         assertEquals("Cell phone number successfully captured", msg.checkRecipientCell(recipient));
         msg.setRecipient(recipient);
         
-        // 2. Test message text (cleaned of trailing punctuation to match hash generation cleanly)
         String messageText = "Hi Mike, can you join us for dinner tonight";
         assertTrue(messageText.length() <= 250);
         msg.setMessage(messageText);
@@ -43,16 +42,15 @@ public class MessageTest {
         String hash = msg.createMessageHash("1234567890", 1, messageText);
         assertEquals("12:1:HITONIGHT", hash);
         
-        // 4. Test choosing option 1 (Send Message)
+        
         assertEquals("Message successfully sent", msg.sentMessage(1));
     }
 
-    // Test 2: Rubric Test Data Message 2 (Invalid phone number missing international code, text, and discard action)
-    @Test
+    // Test 2: Rubric Test Data Message 2 
     public void TestMessage2Case() {
         Messages msg = new Messages();
         
-        // 1. Test invalid recipient cell number (triggers error message handling)
+        // 1. Test invalid recipient cell number 
         String invalidRecipient = "0857975889";
         // Matches the exact spelling currently present in the Messages class return string
         String expectedError = "Cell phone number is incorrectly formitted or does not contain an international code. Please correct the number and try again";
@@ -63,14 +61,14 @@ public class MessageTest {
         assertTrue(messageText.length() <= 250);
         msg.setMessage(messageText);
         
-        // 3. Test choosing option 2 (Disregard/Discard Message)
+        // 3. Test choosing option 2 
         assertEquals("Press 0 to delete the message", msg.sentMessage(2));
     }
 
     
                                              //question 9
     
-    // Test 1: Verify message length check (should not be more than 250 characters)
+    // Test 1: Verify message length check 
     @Test
     public void testCheckMessageLength() {
         Messages msg = new Messages();
@@ -89,8 +87,7 @@ public class MessageTest {
         
         // Test with a valid South African international code format
         String result = msg.checkRecipientCell("+27831234567");
-        
-        // Assert that it returns the successful capture message
+       
         assertEquals("Cell phone number successfully captured", result);
     }
 
@@ -117,10 +114,9 @@ public class MessageTest {
         // Test Choice 1: Sending message should increment total and confirm success
         assertEquals("Message successfully sent", msg.sentMessage(1));
         
-        // Test Choice 2: Disregarding message should prompt deletion instructions
         assertEquals("Press 0 to delete the message", msg.sentMessage(2));
-        
-        // Test Choice 3: Storing message should confirm saving to file
+       
+       
         assertEquals("Message successfully stored", msg.sentMessage(3));
     }
     // --- MESSAGE LENGTH TESTS ---
