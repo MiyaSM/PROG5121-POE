@@ -130,6 +130,15 @@ public class Register {
                  
                 System.out.println("Enter Message (max 250 characters): ");
                 String Message = myscanner.nextLine();
+                
+               //save the message details in the message object 
+               msgObject.setMessageID(MessageID);
+               msgObject.setRecipient(recipientCell);
+               msgObject.setMessage(Message);
+               
+               String hash = msgObject.createMessageHash(MessageID, i, Message);
+               msgObject.setMessageHash(hash);
+               System.out.println("Message hash: " + hash);
                  
                 if (Message.length() <= 250) {
                     System.out.println("Message sent"); 
@@ -147,6 +156,7 @@ public class Register {
                 System.out.println(msgObject.sentMessage(Choice));
              
                 if (Choice == 1 || Choice == 3){
+                    System.out.println("Message Details");
                     System.out.println(msgObject.printMessages());
                 }
             }
