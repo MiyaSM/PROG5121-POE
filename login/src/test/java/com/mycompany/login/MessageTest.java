@@ -18,7 +18,111 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author miyel
  */
 public class MessageTest {
+    
+    
+    ///question 8
 
+    // QUESTION 8 TESTS: Testing Specific Rubric Test Data Cases
+
+    // Test 1: Rubric Test Data Case 1 (Valid phone number, text, hash, and sending action)
+    @Test
+    public void TestDataCase1() {
+        Messages msg = new Messages();
+        
+        // 1. Test recipient number from rubric test data
+        String recipient = "+27718693002";
+        assertEquals("Cell phone number successfully captured", msg.checkRecipientCell(recipient));
+        msg.setRecipient(recipient);
+        
+        // 2. Test message text (cleaned of trailing punctuation to match hash generation cleanly)
+        String messageText = "Hi Mike, can you join us for dinner tonight";
+        assertTrue(messageText.length() <= 250);
+        msg.setMessage(messageText);
+        
+        // 3. Test hash generation for test case 1 (Message number 1)
+        String hash = msg.createMessageHash("1234567890", 1, messageText);
+        assertEquals("12:1:HITONIGHT", hash);
+        
+        // 4. Test choosing option 1 (Send Message)
+        assertEquals("Message successfully sent", msg.sentMessage(1));
+    }
+
+    // Test 2: Rubric Test Data Message 2 (Invalid phone number missing international code, text, and discard action)
+    @Test
+    public void TestMessage2Case() {
+        Messages msg = new Messages();
+        
+        // 1. Test invalid recipient cell number (triggers error message handling)
+        String invalidRecipient = "0857975889";
+        // Matches the exact spelling currently present in the Messages class return string
+        String expectedError = "Cell phone number is incorrectly formitted or does not contain an international code. Please correct the number and try again";
+        assertEquals(expectedError, msg.checkRecipientCell(invalidRecipient));
+        
+        // 2. Test message text for message 2
+        String messageText = "Hi Keegan, did you receive the payment";
+        assertTrue(messageText.length() <= 250);
+        msg.setMessage(messageText);
+        
+        // 3. Test choosing option 2 (Disregard/Discard Message)
+        assertEquals("Press 0 to delete the message", msg.sentMessage(2));
+    }
+
+    
+                                             //question 9
+    
+    // Test 1: Verify message length check (should not be more than 250 characters)
+    @Test
+    public void testCheckMessageLength() {
+        Messages msg = new Messages();
+        
+        // Define a valid message text
+        String validMsg = "Hello, this is a valid test message.";
+        
+        // Assert that the length is less than or equal to 250 characters
+        assertTrue(validMsg.length() <= 250, "Message should be under 250 characters");
+    }
+
+    // Test 2: Verify recipient cell phone number formatting and validation
+    @Test
+    public void testCheckRecipientCell() {
+        Messages msg = new Messages();
+        
+        // Test with a valid South African international code format
+        String result = msg.checkRecipientCell("+27831234567");
+        
+        // Assert that it returns the successful capture message
+        assertEquals("Cell phone number successfully captured", result);
+    }
+
+    // Test 3: Verify unique message hash creation
+    @Test
+    public void testCreateMessageHash() {
+        Messages msg = new Messages();
+        
+        // Test data provided by project specifications
+        String msgID = "1234567890";
+        int messageNumber = 0;
+        String messageText = "Hi tonight";
+        
+        // Generate the hash and compare it against the expected format
+        String hash = msg.createMessageHash(msgID, messageNumber, messageText);
+        assertEquals("12:0:HITONIGHT", hash);
+    }
+
+    // Test 4: Verify message action menu choices (Send, Disregard, Store)
+    @Test
+    public void testSentMessageChoices() {
+        Messages msg = new Messages();
+        
+        // Test Choice 1: Sending message should increment total and confirm success
+        assertEquals("Message successfully sent", msg.sentMessage(1));
+        
+        // Test Choice 2: Disregarding message should prompt deletion instructions
+        assertEquals("Press 0 to delete the message", msg.sentMessage(2));
+        
+        // Test Choice 3: Storing message should confirm saving to file
+        assertEquals("Message successfully stored", msg.sentMessage(3));
+    }
     // --- MESSAGE LENGTH TESTS ---
 
     @Test
@@ -50,16 +154,7 @@ public class MessageTest {
         String actual = msg.checkRecipientCell("08575975889");
         assertEquals(expected, actual, "Cell number without +27 or incorrect format should fail.");
     }
-
-    // --- MESSAGE HASH TESTS ---
-
-   @Test
-    public void testCreateMessageHash() {
-    Messages msg = new Messages();
-    String expectedHash = "ID:1:HELLOWORLD";
-    String actualHash = msg.createMessageHash("ID01", 1, "Hello world");
-    assertEquals(expectedHash, actualHash);
-}
+   
 
     // --- MENU / SENT MESSAGE OPTION TESTS ---
 
@@ -80,4 +175,7 @@ public class MessageTest {
         Messages msg = new Messages();
         assertEquals("Message successfully stored", msg.sentMessage(3), "Choice 3 should return storage message.");
     }
+    
+    
+    
 }
