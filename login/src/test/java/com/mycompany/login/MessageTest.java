@@ -47,6 +47,7 @@ public class MessageTest {
     }
 
     // Test 2: Rubric Test Data Message 2 
+    @Test
     public void TestMessage2Case() {
         Messages msg = new Messages();
         
@@ -150,10 +151,8 @@ public class MessageTest {
         String actual = msg.checkRecipientCell("08575975889");
         assertEquals(expected, actual, "Cell number without +27 or incorrect format should fail.");
     }
-   
 
     // --- MENU / SENT MESSAGE OPTION TESTS ---
-
     @Test
     public void testSendMessage() {
         Messages msg = new Messages();
@@ -171,7 +170,71 @@ public class MessageTest {
         Messages msg = new Messages();
         assertEquals("Message successfully stored", msg.sentMessage(3), "Choice 3 should return storage message.");
     }
-    
+///////////////////////////////////
+    //PART 2
+
+    // Tests finding the longest stored message
+@Test
+    public void testLongestMessage() {
+
+        Messages msg = new Messages();
+
+        msg.setMessage("Where are you? You are late! I have asked you to be on time.");
+
+        msg.sentMessage(3); // store the message
+
+        String expected = "Where are you? You are late! I have asked you to be on time.";
+
+        String actual = msg.longestMessage();
+
+        assertEquals(expected, actual);
+    }
+
+
+    // Tests searching for a message using its ID
+    @Test
+    public void testSearchMessageID() {
+
+        Messages msg = new Messages();
+
+        String result = msg.searchMessageID("1234567890");
+
+        assertNotNull(result);
+    }
+
+// Tests searching for messages using a recipient number
+    @Test
+    public void testSearchRecipient() {
+
+        Messages msg = new Messages();
+
+        String result = msg.searchRecipient("+27838884567");
+
+        assertNotNull(result);
+    }
+
+// Tests deleting a message using its hash
+    @Test
+    public void testDeleteMessageHash() {
+
+        Messages msg = new Messages();
+
+        String result = msg.deleteMessageHash("12:1:HITONIGHT");
+
+        assertNotNull(result);
+    }
+
+// Tests displaying a report of sent messages
+    @Test
+    public void testDisplayReport() {
+
+        Messages msg = new Messages();
+
+        String result = msg.displayReport();
+
+        assertNotNull(result);
+    }
+
     
     
     
