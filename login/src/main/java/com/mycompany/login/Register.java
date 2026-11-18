@@ -180,7 +180,9 @@ public class Register {
                     case 4:
 
                         // Part 3 stored messages menu
-                        System.out.println("\nStored Messages");
+                        msgObject.displayStoredMessages();
+
+                        System.out.println(msgObject.displayReport());
 
                         break;
 

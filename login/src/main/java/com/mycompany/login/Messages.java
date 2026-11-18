@@ -172,14 +172,114 @@ public class Messages {
 
         
 }
-       
-       
-        
+    // Displays all stored messages and their recipients
+
+    public void displayStoredMessages() {
+
+        System.out.println("\nStored Messages:");
+
+        for (int i = 0; i < storedCount; i++) {
+
+            System.out.println("Recipient: " + recipient);
+            System.out.println("Message: " + storedMessages[i]);
+            System.out.println("-------------------");
+        }
+    }
+
+    // Finds and returns the longest stored message
+    public String longestMessage() {
+
+        String longest = "";
+
+        for (int i = 0; i < storedCount; i++) {
+
+            if (storedMessages[i] != null
+                    && storedMessages[i].length() > longest.length()) {
+
+                longest = storedMessages[i];
+            }
+        }
+
+        return longest;
+    }
+
+    // Searches for a message using its Message ID
+    public String searchMessageID(String searchID) {
+
+        for (int i = 0; i < sentCount; i++) {
+
+            if (messageIDs[i] != null
+                    && messageIDs[i].equals(searchID)) {
+
+                return "Message Found: " + sentMessages[i];
+            }
+        }
+
+        return "Message ID not found.";
+    }
+
+    // Searches for all messages sent to a specific recipient
+    public String searchRecipient(String searchRecipient) {
+
+        String results = "";
+
+        for (int i = 0; i < sentCount; i++) {
+
+            if (recipient != null && recipient.equals(searchRecipient)) {
+
+                results = results + sentMessages[i] + "\n";
+            }
+        }
+
+        if (results.isEmpty()) {
+            return "No messages found for this recipient.";
+        }
+
+        return results;
+    }
     
+    // Deletes a message using its hash
+    public String deleteMessageHash(String hash) {
+
+        for (int i = 0; i < sentCount; i++) {
+
+            if (messageHashes[i] != null
+                    && messageHashes[i].equals(hash)) {
+
+                String deletedMessage = sentMessages[i];
+
+                sentMessages[i] = null;
+                messageHashes[i] = null;
+                messageIDs[i] = null;
+
+                return "Message \"" + deletedMessage
+                        + "\" successfully deleted.";
+            }
+        }
+
+        return "Message hash not found.";
+    }
     
-    
-    
-    
+    // Displays a report of all sent messages
+    public String displayReport() {
+
+        String report = "";
+
+        for (int i = 0; i < sentCount; i++) {
+
+            if (sentMessages[i] != null) {
+
+                report = report + "\nMessage ID: " + messageIDs[i];
+                report = report + "\nMessage Hash: " + messageHashes[i];
+                report = report + "\nMessage: " + sentMessages[i];
+                
+            }
+        }
+
+        return report;
+}
+
+
             
     
 }
