@@ -27,3 +27,15 @@
 {}
 {}
 {"message": "Where are you? You are late! I have asked you to be on time."}
+{
+    "recipient": "+27123456789",
+    "messageID": "6407607306",
+    "messageHash": "64:1:HIMVJMVD",
+    "message": "hi hehchc hfhfnf nfjcnf mvjmvd"
+}
+{
+    "recipient": "+27123456789",
+    "messageID": "9520570959",
+    "messageHash": "95:2:JFNJNJNZGJMXKJGNKXJKNXJNBKJNKJNKXNJFNJNJNZGJMXKJGNKXJKNXJNBKJNKJNKXN",
+    "message": "jfnjnjnzgjmxkjgnkxjknxjnbkjnkjnkxn"
+}
