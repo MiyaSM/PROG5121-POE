@@ -39,7 +39,7 @@ public class Register {
         while (!myLogin.checkUserName(userName)) {
             System.out.println("Username is not correctly formatted; please ensure that your username "
                     + "contains an underscore and is no more than five characters in length.");
-            System.out.println("Please enter name again: ");
+            System.out.println("Please enter username again: ");
             userName = myscanner.nextLine();
 
         }
@@ -169,7 +169,8 @@ public class Register {
                         break;
 
                     case 2:
-                        System.out.println("Coming Soon.");
+                        // Display the report of sent messages
+                        System.out.println(msgObject.displayReport());
                         break;
 
                     case 3:

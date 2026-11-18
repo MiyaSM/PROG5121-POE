@@ -234,72 +234,72 @@ public class MessageTest {
 
         assertNotNull(result);
     }
-    
+
     // Tests if the sent messages array contains the correct messages
-@Test
-public void testSentMessagesArray() {
+    @Test
+    public void testSentMessagesArray() {
 
-    String expected = "Did you get the cake?, It is dinner time!";
+        String expected = "Did you get the cake?, It is dinner time!";
 
-    String actual = "Did you get the cake?, It is dinner time!";
+        String actual = "Did you get the cake?, It is dinner time!";
 
-    assertEquals(expected, actual);
-}
+        assertEquals(expected, actual);
+    }
 
 // Tests that the longest message is returned correctly
-@Test
-public void testLongestMessagePart3() {
+    @Test
+    public void testLongestMessagePart3() {
 
-    Messages msg = new Messages();
+        Messages msg = new Messages();
 
-    msg.setMessage("Where are you? You are late! I have asked you to be on time.");
-    msg.sentMessage(3);
+        msg.setMessage("Where are you? You are late! I have asked you to be on time.");
+        msg.sentMessage(3);
 
-    String expected = "Where are you? You are late! I have asked you to be on time.";
+        String expected = "Where are you? You are late! I have asked you to be on time.";
 
-    String actual = msg.longestMessage();
+        String actual = msg.longestMessage();
 
-    assertEquals(expected, actual);
-}
+        assertEquals(expected, actual);
+    }
 
 // Tests searching for a message using its ID
-@Test
-public void testSearchMessageIDPart3() {
+    @Test
+    public void testSearchMessageIDPart3() {
 
-    String expected = "It is dinner time!";
+        String expected = "It is dinner time!";
 
-    String actual = "It is dinner time!";
+        String actual = "It is dinner time!";
 
-    assertEquals(expected, actual);
-}
+        assertEquals(expected, actual);
+    }
 
 // Tests searching all messages for a recipient
-@Test
-public void testSearchRecipientPart3() {
+    @Test
+    public void testSearchRecipientPart3() {
 
-    String expected =
-            "Where are you? You are late! I have asked you to be on time."
-            + "Ok, I am leaving without you.";
+        String expected
+                = "Where are you? You are late! I have asked you to be on time."
+                + "Ok, I am leaving without you.";
 
-    String actual =
-            "Where are you? You are late! I have asked you to be on time."
-            + "Ok, I am leaving without you.";
+        String actual
+                = "Where are you? You are late! I have asked you to be on time."
+                + "Ok, I am leaving without you.";
 
-    assertEquals(expected, actual);
-}
+        assertEquals(expected, actual);
+    }
 // Tests that a report is generated
-@Test
-public void testDisplayReportPart3() {
 
-    Messages msg = new Messages();
+    @Test
+    public void testDisplayReportPart3() {
 
-    String report = msg.displayReport();
+        Messages msg = new Messages();
 
-    assertNotNull(report);
+        String report = msg.displayReport();
+
+        assertNotNull(report);
+    }
+
 }
-
-}
-    
     
     
     
