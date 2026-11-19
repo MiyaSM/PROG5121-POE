@@ -177,16 +177,108 @@ public class Register {
                         System.out.println("Exiting QuickChat. Goodbye!");
                         Active = false;
                         break;
-                        
+   
                     case 4:
+// =====================
+// PART 3 STORED MESSAGE MENU
+// =====================
 
-                        // Part 3 stored messages menu
-                        msgObject.displayStoredMessages();
-                        msgObject.loadMessagesFromJSON();
+                        boolean storedMenu = true;
 
-                        msgObject.displayJSONMessages();
+                        while (storedMenu) {
 
-                        System.out.println(msgObject.displayReport());
+                            System.out.println("\n===== STORED MESSAGES =====");
+                            System.out.println("1. Display Stored Messages");
+                            System.out.println("2. Display Longest Stored Message");
+                            System.out.println("3. Search Message ID");
+                            System.out.println("4. Search Recipient");
+                            System.out.println("5. Delete Message Hash");
+                            System.out.println("6. Display Report");
+                            System.out.println("7. Display Stored JSON Messages");
+                            System.out.println("8. Back");
+
+                            int storedChoice = myscanner.nextInt();
+                            myscanner.nextLine();
+
+                            switch (storedChoice) {
+
+                                case 1:
+
+                                    // Displays stored messages
+                                    msgObject.displayStoredMessages();
+
+                                    break;
+
+                                case 2:
+
+                                    // Displays longest stored message
+                                    System.out.println("Longest Message:");
+                                    System.out.println(msgObject.longestMessage());
+
+                                    break;
+
+                                case 3:
+
+                                    // Search message by ID
+                                    System.out.print("Enter Message ID: ");
+                                    String searchID = myscanner.nextLine();
+
+                                    System.out.println(
+                                            msgObject.searchMessageID(searchID));
+
+                                    break;
+
+                                case 4:
+
+                                    // Search messages by recipient
+                                    System.out.print("Enter Recipient Number: ");
+                                    String searchRecipient = myscanner.nextLine();
+
+                                    System.out.println(
+                                            msgObject.searchRecipient(searchRecipient));
+
+                                    break;
+
+                                case 5:
+
+                                    // Delete message using hash
+                                    System.out.print("Enter Message Hash: ");
+                                    String hash = myscanner.nextLine();
+
+                                    System.out.println(
+                                            msgObject.deleteMessageHash(hash));
+
+                                    break;
+
+                                case 6:
+
+                                    // Display message report
+                                    System.out.println(
+                                            msgObject.displayReport());
+
+                                    break;
+
+                                case 7:
+
+                                    // Load and display messages from JSON file
+                                    msgObject.loadMessagesFromJSON();
+
+                                    msgObject.displayJSONMessages();
+
+                                    break;
+
+                                case 8:
+
+                                    // Return to main menu
+                                    storedMenu = false;
+
+                                    break;
+
+                                default:
+
+                                    System.out.println("Invalid option.");
+                            }
+                        }
 
                         break;
 
@@ -199,10 +291,6 @@ public class Register {
     }
 
 }
-               
-           
-         
-         
        
  
  
