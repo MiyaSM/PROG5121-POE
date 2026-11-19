@@ -4,6 +4,8 @@ package com.mycompany.login;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 
@@ -31,6 +33,7 @@ public class Messages {
     private static int totalMessages = 0;
 
     // Part 3 arrays
+    
 // Stores all sent messages
     private static String[] sentMessages = new String[100];
 
@@ -174,8 +177,10 @@ private static String[] recipients = new String[100];
             //code geeks for geeks       
         }//code from <a href ="https://www.geeksforgeeks.org/java/working-with-json-data-in-java/> jsaon file<a/>
 
-        
-}
+      //////////////////////////////////////////////////////////////////////////
+     // Part 3
+}/////////////////////////////////////////
+    
     // Displays all stored messages and their recipients
 
     public void displayStoredMessages() {
@@ -184,9 +189,9 @@ private static String[] recipients = new String[100];
 
         for (int i = 0; i < storedCount; i++) {
 
-            System.out.println("Recipient: " + recipient);
+            System.out.println("Recipient: " + recipients[i]);
             System.out.println("Message: " + storedMessages[i]);
-            System.out.println("-------------------");
+            
         }
     }
 
@@ -264,7 +269,7 @@ private static String[] recipients = new String[100];
 
         return "Message hash not found.";
     }
-    
+
     // Displays a report of all sent messages
     public String displayReport() {
 
@@ -277,14 +282,70 @@ private static String[] recipients = new String[100];
                 report = report + "\nMessage ID: " + messageIDs[i];
                 report = report + "\nMessage Hash: " + messageHashes[i];
                 report = report + "\nMessage: " + sentMessages[i];
-                
+
             }
         }
 
         return report;
-}
+    }
+    // Reads messages from the JSON file and loads them into arrays
 
+    public void loadMessagesFromJSON() {
+
+        try {
+
+            BufferedReader reader = new BufferedReader(
+                    new FileReader("messages.json"));
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                JSONObject obj = new JSONObject(line);
+
+                storedMessages[storedCount]
+                        = obj.getString("message");
+
+                messageIDs[storedCount]
+                        = obj.getString("messageID");
+
+                messageHashes[storedCount]
+                        = obj.getString("messageHash");
+
+                recipients[storedCount]
+                        = obj.getString("recipient");
+
+                storedCount++;
+            }
+
+            reader.close();
+
+        } catch (Exception e) {
+
+            System.out.println("Error reading JSON file: "
+                    + e.getMessage());
+        }
+    }
+
+    // Displays messages loaded from JSON
+    public void displayJSONMessages() {
+
+        System.out.println("\nMessages loaded from JSON:");
+
+        for (int i = 0; i < storedCount; i++) {
+
+            System.out.println("Message ID: "
+                    + messageIDs[i]);
+
+            System.out.println("Recipient: "
+                    + recipients[i]);
+
+            System.out.println("Message: "
+                    + storedMessages[i]);
 
             
-    
+        }
+    }
+
+
 }

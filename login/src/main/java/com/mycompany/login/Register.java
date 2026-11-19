@@ -182,6 +182,9 @@ public class Register {
 
                         // Part 3 stored messages menu
                         msgObject.displayStoredMessages();
+                        msgObject.loadMessagesFromJSON();
+
+                        msgObject.displayJSONMessages();
 
                         System.out.println(msgObject.displayReport());
 
