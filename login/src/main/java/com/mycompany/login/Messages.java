@@ -45,6 +45,8 @@ public class Messages {
 
 // Stores all message IDs
     private static String[] messageIDs = new String[100];
+    // Stores recipients
+private static String[] recipients = new String[100];
 
 // Keeps track of array positions
     private static int sentCount = 0;
@@ -111,6 +113,8 @@ public class Messages {
                 sentMessages[sentCount] = message;
                 messageHashes[sentCount] = messagehash;
                 messageIDs[sentCount] = messageID;
+                recipients[sentCount] = recipient;
+
                 sentCount++;
                 
                 return "Message successfully sent";
@@ -225,7 +229,8 @@ public class Messages {
 
         for (int i = 0; i < sentCount; i++) {
 
-            if (recipient != null && recipient.equals(searchRecipient)) {
+            if (recipients[i] != null
+                    && recipients[i].equals(searchRecipient)) {
 
                 results = results + sentMessages[i] + "\n";
             }
