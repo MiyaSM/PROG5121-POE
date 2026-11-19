@@ -183,17 +183,20 @@ private static String[] recipients = new String[100];
     
     // Displays all stored messages and their recipients
 
+ 
     public void displayStoredMessages() {
 
         System.out.println("\nStored Messages:");
 
         for (int i = 0; i < storedCount; i++) {
 
+            // Displays recipient and stored message
             System.out.println("Recipient: " + recipients[i]);
             System.out.println("Message: " + storedMessages[i]);
-            
+            System.out.println("-------------------");
         }
     }
+
 
     // Finds and returns the longest stored message
     public String longestMessage() {
